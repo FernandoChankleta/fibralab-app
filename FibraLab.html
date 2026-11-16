@@ -1,0 +1,694 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>FibraLab · Alimentación PON antes del splitter</title>
+  <style>
+:root{font-family:Inter,Segoe UI,Arial,sans-serif;color:#e9f1fb;background:#08111e;font-synthesis:none}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 86% -12%,#153d59 0,transparent 28%),#08111e}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid #63d1eb;outline-offset:3px}a{color:#74d9eb}.shell{max-width:1460px;padding:0 28px;margin:auto}.topbar{height:68px;border-bottom:1px solid #263a50;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:10px;align-items:center}.brand-symbol{width:34px;height:34px;display:grid;place-items:center;background:#b9f0ef;color:#0c3243;border-radius:8px;font-size:27px;font-weight:700;line-height:1}.brand strong{display:block;font-size:19px;letter-spacing:-.5px}.brand small{display:block;color:#91a5b8;font-size:10px;margin-top:2px}.top-note,.eyebrow{font-size:10px;color:#8aa5bf;font-weight:750;letter-spacing:1.45px}.top-note{display:flex;align-items:center;gap:9px}.top-note i{width:7px;height:7px;border-radius:50%;background:#6bdfba;box-shadow:0 0 11px #6bdfba}.intro{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:27px 0 22px}.intro h1{font-size:clamp(25px,2.8vw,36px);letter-spacing:-1.1px;line-height:1.1;margin:7px 0 8px}.intro p,.view-intro p{color:#a0b0c2;font-size:14px;line-height:1.5;margin:0}.intro-key{display:flex;gap:6px;white-space:nowrap}.intro-key span{font-size:10px;color:#9db7c6;border:1px solid #365066;border-radius:30px;padding:8px 10px}.card{background:#101d2e;border:1px solid #294057;border-radius:11px;box-shadow:0 10px 35px #00000014}.simulator-controls{padding:17px 19px}.control-heading{display:flex;align-items:baseline;gap:13px;margin-bottom:13px}.control-heading strong{font-size:14px}.control-heading span{font-size:11px;color:#839bb2}.scenario-choices{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:8px}.scenario-choice{height:54px;border-radius:8px;border:1px solid #344b61;background:#16263a;color:#b6cadd;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:650;min-width:0;padding:5px 6px}.scenario-choice b{font-size:17px;font-weight:500;color:#7bc9d2}.scenario-choice:hover{border-color:#62b8c8;color:#eaf9fb}.scenario-choice.active{background:#214b59;border-color:#53d5cc;color:#ecfffd;box-shadow:inset 0 0 0 1px #53d5cc33}.scenario-choice.active b{color:#b7fff0}.time-controls{border-top:1px solid #2c4054;margin-top:14px;padding-top:13px;display:flex;gap:18px;align-items:center}.play-button{height:36px;min-width:115px;border:0;border-radius:7px;background:#63d5df;color:#0a2d3b;font-size:12px;font-weight:750}.play-button span{margin-left:5px}.time-range{flex:1;min-width:150px}.time-range>div:first-child,.speed-control>span{display:flex;justify-content:space-between;font-size:11px;color:#99adbf;font-weight:650}.time-range strong,.speed-control strong{color:#e5f5f9}.time-range input,.speed-control input{width:100%;accent-color:#68d7dc;margin:7px 0 0}.range-ends{display:flex;justify-content:space-between;color:#758fa7;font-size:10px;margin-top:-1px}.speed-control{width:180px;display:flex;flex-direction:column;gap:8px}.speed-control[hidden]{display:none}.tabs{display:flex;gap:26px;border-bottom:1px solid #2a4055;margin:17px 0 18px}.tab{border:0;background:none;color:#8da3b8;font-size:12px;font-weight:700;padding:10px 3px 12px;border-bottom:2px solid transparent;white-space:nowrap}.tab:hover{color:#effcff}.tab.active{color:#d8fbfc;border-color:#65d9dc}.tab-panel[hidden]{display:none}.map-grid{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(300px,.8fr);gap:14px}.map-card,.event-card,.cutaway-card,.detection-card,.heat-card,.plot-card,.evidence-card,.contribution-card,.signatures-card,.method-item,.method-bottom .card{padding:17px 19px}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.panel-head h2,.panel-head h3{font-size:17px;letter-spacing:-.25px;margin:5px 0 0}.small-pill,.quiet-label{font-size:11px;color:#a2ccd2;background:#173b4a;border-radius:20px;padding:6px 9px;white-space:nowrap}.map-card svg{display:block;width:100%;height:auto;margin:5px 0 -4px}.map-legend{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:10px;color:#9bb0c3}.map-legend span{display:flex;align-items:center;gap:7px}.legend-line{width:17px;height:0;border-top:3px solid #59dddb}.legend-line.rail{border-color:#71869e;border-top-style:dashed}.legend-dot{width:9px;height:9px;border-radius:50%;background:#f5a76a}.map-disclaimer,.chart-note{font-size:10px;color:#7f98ae;line-height:1.45;margin:8px 0 0}.event-icon{display:grid;place-items:center;width:37px;height:37px;border-radius:9px;background:#234f58;color:#92f5e5;font-size:23px}.state-pill{display:inline-block;margin-top:19px;border-radius:20px;padding:6px 11px;font-size:11px;font-weight:700;background:#245b4f;color:#a8f4ce}.event-card>p{font-size:13px;line-height:1.55;color:#b7c8d8;margin:13px 0 17px}.event-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-top:1px solid #2d4255;border-bottom:1px solid #2d4255;padding:14px 0}.event-facts div{min-width:0}.event-facts span{font-size:9px;color:#7d95ab;letter-spacing:1px;display:block}.event-facts strong{font-size:12px;display:block;margin-top:6px}.event-signature{margin-top:16px}.event-signature p{font-size:12px;color:#bfd6df;line-height:1.5;margin:7px 0 0}.overview-bottom{display:grid;grid-template-columns:minmax(0,1.24fr) minmax(0,1fr);gap:14px;margin-top:14px}.cutaway-card svg{width:100%;display:block;height:auto;max-height:205px}.under-graphic{color:#a2b7c6;font-size:11px;margin:0;line-height:1.4}.lamp{width:10px;height:10px;background:#617a90;border-radius:50%;box-shadow:0 0 0 5px #617a901a;margin-top:6px}.lamp.on{background:#f3b46d;box-shadow:0 0 0 5px #f3b46d1f,0 0 15px #f3b46d}.lamp.info{background:#66d9d7;box-shadow:0 0 0 5px #66d9d71f}.detection-headline{font-size:23px;font-weight:750;letter-spacing:-.5px;margin-top:16px}.detection-card>p{font-size:12px;color:#9eb3c5;line-height:1.5;min-height:37px;margin:8px 0 12px}.mini-signals{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.mini-signal{min-width:0;border-top:2px solid #294256;padding-top:6px}.mini-signal strong{display:block;font-size:12px}.mini-signal span{display:block;color:#8fa8b9;font-size:9px;margin-top:3px}.mini-signal i{display:block;width:100%;height:4px;background:#253c4e;border-radius:4px;margin-top:7px;overflow:hidden}.mini-signal i em{display:block;height:100%;border-radius:4px}.text-action{background:none;border:0;padding:0;color:#7bdfdd;font-size:12px;font-weight:700;margin-top:16px}.text-action:hover{text-decoration:underline}.view-intro{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:7px 0 16px}.view-intro h2{font-size:24px;margin:7px 0 5px;letter-spacing:-.6px}.view-intro p{max-width:760px;font-size:12px}.select-field{display:flex;flex-direction:column;gap:6px;min-width:200px;color:#8ba4bb;font-size:10px;letter-spacing:1px;font-weight:750}.select-field select{background:#172b3f;color:#e5f4f9;border:1px solid #3c586d;border-radius:7px;height:36px;padding:0 8px;font-size:12px;letter-spacing:0}.signal-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(320px,.8fr);gap:14px}.signal-side{display:flex;flex-direction:column;gap:14px}.canvas-wrap{width:100%;position:relative}.canvas-wrap canvas{display:block;width:100%;height:100%}.heat-wrap{height:310px}.profile-wrap,.trend-wrap{height:148px}.heat-scale{color:#8fa9bb;font-size:10px;display:flex;align-items:center;gap:7px}.heat-scale i{width:50px;height:6px;border-radius:5px;background:linear-gradient(90deg,#14314e,#238ea8,#f8ae68)}.headline-number{font-size:18px;color:#b4f1eb}.trend-slope{font-size:14px;color:#acd8d7}.channel-header{display:flex;justify-content:space-between;align-items:end;margin:19px 0 12px}.channel-header h3{font-size:16px;margin:5px 0 0}.channel-header>span{font-size:11px;color:#a8d3db}.channel-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.channel-card{padding:13px 14px}.channel-name{display:flex;align-items:center;justify-content:space-between;gap:5px;color:#a0b4c4;font-size:11px}.channel-name i{width:7px;height:7px;border-radius:50%;display:inline-block;margin-right:6px}.channel-card strong{display:block;font-size:20px;letter-spacing:-.4px;margin-top:8px}.channel-card strong small{font-size:10px;color:#859bb0;font-weight:500}.channel-card .ref{font-size:10px;color:#859bb0;margin-top:4px}.channel-bar{height:5px;background:#233b4f;border-radius:5px;margin-top:9px;overflow:hidden}.channel-bar span{display:block;height:100%;border-radius:5px}.detect-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.8fr);gap:14px}.evidence-card h3,.contribution-card h3,.signatures-card h3,.method-item h3,.method-bottom h3{font-size:18px;margin:7px 0 8px}.evidence-card>p,.contribution-card>p,.method-item p,.method-bottom p{font-size:12px;color:#9db2c3;line-height:1.6;margin:0}.evidence-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:17px 0}.evidence-step{padding:11px;background:#15283c;border:1px solid #304a60;border-radius:7px}.evidence-step b{font-size:10px;color:#88b2c4;display:block}.evidence-step strong{font-size:12px;display:block;margin-top:6px}.evidence-step span{font-size:10px;color:#88a0b5;display:block;margin-top:5px}.timeline-heading{display:flex;justify-content:space-between;gap:8px;border-top:1px solid #2a4259;padding-top:15px;margin-top:15px;font-size:11px}.timeline-heading span{color:#96adbf}.event-timeline{height:78px;position:relative;margin-top:7px}.timeline-track{position:absolute;left:0;right:0;top:29px;height:6px;background:#2a4154;border-radius:10px}.timeline-active{position:absolute;top:29px;height:6px;background:#6ccbd0;border-radius:10px}.timeline-marker{position:absolute;top:20px;width:2px;height:23px;background:#f4b276}.timeline-now{position:absolute;top:16px;width:2px;height:32px;background:#eef6fa}.timeline-label{position:absolute;top:52px;color:#8ba5b9;font-size:10px;transform:translateX(-50%);white-space:nowrap}.contribution-bars{margin-top:20px}.contribution-row{margin:0 0 16px}.contribution-head{display:flex;justify-content:space-between;font-size:11px;margin-bottom:6px;color:#c8dae5}.contribution-track{height:7px;background:#253c50;border-radius:6px;overflow:hidden}.contribution-fill{height:100%;border-radius:6px}.score-total{border-top:1px solid #2d455b;padding-top:14px;display:flex;justify-content:space-between;font-size:13px}.score-total strong{font-size:19px}.rule-text{border-top:1px solid #2d455b;padding-top:14px;margin-top:13px!important}.signatures-card{margin-top:14px}.signatures-card .panel-head>span{font-size:10px;color:#8299ae}.signature-list{display:grid;grid-template-columns:repeat(3,1fr);gap:0 18px}.signature-list>div{border-top:1px solid #294156;padding:10px 0;display:flex;flex-direction:column;gap:4px}.signature-list strong{font-size:11px}.signature-list span{font-size:10px;color:#8fa7ba;line-height:1.4}.method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.method-item b{font-size:12px;color:#72dbd8}.method-item h3{font-size:15px;margin-top:13px}.method-bottom{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}.source-links{display:flex;gap:18px;flex-wrap:wrap;margin:17px 0}.source-links a{font-size:11px;text-decoration:none}.source-links a:hover{text-decoration:underline}footer{border-top:1px solid #263d53;margin-top:29px;padding:20px 0 25px;color:#6d889f;font-size:10px}
+@media(max-width:1160px){.scenario-choices{grid-template-columns:repeat(3,1fr)}.map-grid,.signal-layout{grid-template-columns:minmax(0,1.35fr) minmax(285px,.8fr)}.channel-grid{grid-template-columns:repeat(2,1fr)}.method-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:820px){.shell{padding:0 16px}.intro-key{display:none}.map-grid,.overview-bottom,.signal-layout,.detect-grid{grid-template-columns:1fr}.map-card svg{max-height:300px}.event-card{min-height:0}.signal-side{display:grid;grid-template-columns:1fr 1fr}.profile-wrap,.trend-wrap{height:160px}.signature-list{grid-template-columns:repeat(2,1fr)}.time-controls{flex-wrap:wrap}.speed-control{width:100%}}
+@media(max-width:540px){.top-note{display:none}.intro{padding:22px 0 17px}.intro h1{font-size:27px}.control-heading{flex-direction:column;gap:3px}.simulator-controls{padding:14px}.scenario-choices{grid-template-columns:repeat(2,1fr)}.scenario-choice{height:42px;justify-content:flex-start;padding:0 11px}.time-controls{gap:11px}.play-button{min-width:39px;width:39px}.play-button span{display:none}.tabs{gap:16px;overflow:auto;white-space:nowrap}.tab{font-size:11px}.map-card,.event-card,.cutaway-card,.detection-card,.heat-card,.plot-card,.evidence-card,.contribution-card,.signatures-card,.method-item,.method-bottom .card{padding:15px}.map-legend{gap:9px}.map-legend span{font-size:9px}.mini-signals{grid-template-columns:repeat(2,1fr)}.view-intro{align-items:start;flex-direction:column}.select-field{width:100%}.signal-side,.method-grid,.method-bottom,.channel-grid,.signature-list{grid-template-columns:1fr}.evidence-steps{grid-template-columns:1fr}.event-facts strong{font-size:11px}.source-links{gap:10px 15px}}
+.map-main,.map-side{display:flex;flex-direction:column;gap:14px;min-width:0;align-self:start}.map-side .event-card{flex:1}.map-side .detection-card{flex:1}.map-side .state-pill{margin-top:9px}.map-side .event-card>p{margin:9px 0 10px}.map-side .event-facts{padding:10px 0}.map-side .event-signature{margin-top:10px}.map-side .detection-headline{font-size:20px;margin-top:8px}.map-side .detection-card>p{min-height:0;margin:6px 0 9px}.map-side .text-action{margin-top:9px}.cutaway-card{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(210px,.65fr);grid-template-rows:auto 1fr;column-gap:22px}.cutaway-card .panel-head{grid-column:1/-1}.cutaway-card svg{grid-column:1;max-height:155px}.cutaway-card .under-graphic{grid-column:2;align-self:center;font-size:13px;line-height:1.55}@media(max-width:820px){.map-side{display:grid;grid-template-columns:1fr 1fr}.cutaway-card{grid-template-columns:minmax(0,1fr) minmax(180px,.7fr)}}@media(max-width:540px){.map-side{display:flex}.cutaway-card{display:block}.cutaway-card svg{max-height:205px}.cutaway-card .under-graphic{font-size:11px}}
+.scope-banner{margin:-8px 0 17px;padding:10px 14px;background:#123340;border:1px solid #2b6970;border-radius:8px;color:#b9dfe2;font-size:12px;line-height:1.45}.scope-banner strong{color:#e0f8f4}.otdr-card{padding:17px 19px;margin-top:14px}.otdr-wrap{height:190px}.unobservable{grid-column:1/-1;padding:18px;border:1px dashed #597083;border-radius:8px;color:#a8bdca;font-size:12px}@media(max-width:540px){.otdr-card{padding:15px}.otdr-card .panel-head{flex-direction:column}.otdr-wrap{height:210px}}
+.glossary-card{padding:17px 19px;margin-top:14px}.glossary-card h3{margin:7px 0 14px;font-size:18px}.glossary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.glossary-grid>div{padding:12px;background:#15283c;border:1px solid #304a60;border-radius:7px}.glossary-grid strong{display:block;color:#c7f2ed;font-size:12px;margin-bottom:6px}.glossary-grid span,.glossary-card p{color:#a9c0ce;font-size:12px;line-height:1.55}.glossary-card p{margin:14px 0 0}.glossary-card p strong{color:#e6f6f7}@media(max-width:540px){.glossary-card{padding:15px}.glossary-grid{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar"><div class="brand"><span class="brand-symbol" aria-hidden="true">⌁</span><div><strong>FibraLab</strong><small>Monitoreo de alimentación PON · laboratorio virtual</small></div></div><span class="top-note"><i></i> DATOS SINTÉTICOS · 8 KM</span></header>
+    <main>
+      <div class="intro"><div><span class="eyebrow">OLT → FIBRA DE ALIMENTACIÓN → SPLITTER</span><h1>¿Qué ocurre antes del splitter?</h1><p>Simula fenómenos en 8 km de fibra de alimentación y compara el retorno OTDR con las señales de sensado distribuido.</p></div><div class="intro-key"><span>01 · Elegir</span><span>02 · Simular</span><span>03 · Interpretar</span></div></div>
+      <p class="scope-banner"><strong>Alcance:</strong> un solo tramo entre la OLT y el primer splitter. Las ramas y usuarios posteriores quedan como trabajo futuro.</p>
+
+      <section class="simulator-controls card" aria-label="Controles de simulación">
+        <div class="control-heading"><strong>Fenómeno simulado</strong><span>Selecciona un caso para ver su firma espacial y temporal.</span></div>
+        <div id="scenarioChoices" class="scenario-choices" role="group" aria-label="Fenómenos"></div>
+        <div class="time-controls"><button id="play" class="play-button" type="button" aria-label="Reproducir simulación">▶ <span>Reproducir</span></button><div class="time-range"><div><label for="time">Instante de simulación</label><strong id="timeValue">180 s</strong></div><input id="time" type="range" min="0" max="320" step="2" value="180"><div class="range-ends"><span>0 s</span><span>320 s</span></div></div><label id="speedWrap" class="speed-control" hidden><span>Velocidad del tren <strong id="trainSpeedValue">120 km/h</strong></span><input id="trainSpeed" type="range" min="80" max="160" step="10" value="120"></label></div>
+      </section>
+
+      <nav class="tabs" aria-label="Vistas de la simulación"><button class="tab active" type="button" data-tab="map" aria-selected="true">01 · Mapa y evento</button><button class="tab" type="button" data-tab="signals" aria-selected="false">02 · Señales</button><button class="tab" type="button" data-tab="detection" aria-selected="false">03 · Detección</button><button class="tab" type="button" data-tab="method" aria-selected="false">04 · Modelo</button></nav>
+
+      <section id="map" class="tab-panel">
+        <div class="map-grid">
+          <div class="map-main">
+          <section class="card map-card"><div class="panel-head"><div><span class="eyebrow">TRAZADO ESQUEMÁTICO · PRE SPLITTER</span><h2>Fibra de alimentación</h2></div><span id="mapTime" class="small-pill">t = 180 s</span></div><svg id="fiberMap" viewBox="0 0 1000 330" role="img" aria-label="Trazado esquemático de ocho kilómetros desde OLT hasta splitter"></svg><div class="map-legend"><span><i class="legend-line fiber"></i> Fibra monitoreada</span><span><i class="legend-line rail"></i> Vía de referencia</span><span><i class="legend-dot"></i> Fenómeno o detección</span></div><p class="map-disclaimer">Mapa conceptual, sin coordenadas reales. El splitter marca el límite del estudio. Pulsa la fibra para inspeccionar una posición.</p></section>
+          <section class="card cutaway-card"><div class="panel-head"><div><span class="eyebrow">VISTA DEL EVENTO</span><h2>Qué le sucede a la fibra</h2></div><span id="cutawayLocation" class="quiet-label">Km 4,50</span></div><svg id="eventGraphic" viewBox="0 0 680 200" role="img" aria-label="Diagrama del fenómeno y la fibra"></svg><p id="physicalExplanation" class="under-graphic"></p></section>
+          </div>
+          <div class="map-side"><aside class="card event-card"><div class="panel-head"><div><span class="eyebrow">FENÓMENO EN ESCENA</span><h2 id="eventTitle">Excavación cercana</h2></div><span id="eventIcon" class="event-icon">⌁</span></div><div id="eventState" class="state-pill">Activo</div><p id="eventDescription"></p><div class="event-facts"><div><span>INICIO</span><strong id="eventStart">120 s</strong></div><div><span>POSICIÓN</span><strong id="eventPosition">Km 4,50</strong></div><div><span>TIPO</span><strong id="eventKind">Localizado</strong></div></div><div class="event-signature"><span class="eyebrow">FIRMA ESPERADA</span><p id="eventExpected"></p></div></aside><section class="card detection-card"><div class="panel-head"><div><span class="eyebrow">RESULTADO EN ESTE INSTANTE</span><h2>¿Se detectó?</h2></div><span id="detectionLamp" class="lamp"></span></div><div id="detectionHeadline" class="detection-headline">Analizando</div><p id="detectionDetail"></p><div id="miniSignals" class="mini-signals"></div><button id="goDetection" class="text-action" type="button">Ver por qué se detectó →</button></section></div>
+        </div>
+      </section>
+
+      <section id="signals" class="tab-panel" hidden><div class="view-intro"><div><span class="eyebrow">LECTURA DISTRIBUIDA</span><h2>Señales por distancia y tiempo</h2><p>La franja horizontal representa una fuente fija; una diagonal indica movimiento. Cambia el canal para comparar cómo responde cada instrumento.</p></div><label class="select-field">CANAL DEL MAPA<select id="heatChannel"><option value="vib">Vibración · DAS</option><option value="strain">Deformación · DSS</option><option value="temp">Temperatura · DTS</option><option value="alpha">Atenuación local · OTDR</option><option value="score">Índice D(z,t)</option></select></label></div><div class="signal-layout"><section class="card heat-card"><div class="panel-head"><div><span class="eyebrow">DESVIACIÓN RESPECTO A LA REFERENCIA</span><h3 id="heatTitle">Vibración · DAS</h3></div><span class="heat-scale">bajo <i></i> alto</span></div><div class="canvas-wrap heat-wrap"><canvas id="heatmap" role="img" aria-label="Mapa espacio temporal del canal elegido"></canvas></div><p class="chart-note">Eje horizontal: tiempo · eje vertical: posición. La zona oscura tras un corte carece de retorno observable. Pulsa para seleccionar un punto.</p></section><div class="signal-side"><section class="card plot-card"><div class="panel-head"><div><span class="eyebrow">ESTADO ESPACIAL</span><h3>D(z,t) en toda la fibra</h3></div><strong id="maxScore" class="headline-number">0,00</strong></div><div class="canvas-wrap profile-wrap"><canvas id="scoreProfile" role="img" aria-label="Índice de degradación a lo largo de la fibra"></canvas></div></section><section class="card plot-card"><div class="panel-head"><div><span class="eyebrow">EVOLUCIÓN DEL PUNTO</span><h3 id="trendTitle">Km 4,50 · D(z,t)</h3></div><strong id="trendSlope" class="trend-slope">—</strong></div><div class="canvas-wrap trend-wrap"><canvas id="trend" role="img" aria-label="Evolución del índice en el punto seleccionado"></canvas></div></section></div></div><section class="card otdr-card"><div class="panel-head"><div><span class="eyebrow">RETRODISPERSIÓN RAYLEIGH · TRAZA SINTÉTICA</span><h3>OTDR: referencia frente a medición</h3></div><span id="otdrFinding" class="small-pill">Sin cambio óptico</span></div><div class="canvas-wrap otdr-wrap"><canvas id="otdrTrace" role="img" aria-label="Traza OTDR de referencia y medición a lo largo de ocho kilómetros"></canvas></div><p class="chart-note">Potencia de retorno relativa (dB), con atenuación de ida y vuelta. Los escalones indican pérdida; una terminación abrupta indica posible corte. Modelo conceptual, sin pulso ni zona muerta instrumental.</p></section><div class="channel-header"><div><span class="eyebrow">MEDICIONES ACTUALES</span><h3>Cuatro magnitudes en el punto seleccionado</h3></div><span id="selectedLocation">Km 4,50</span></div><div id="channelGrid" class="channel-grid"></div></section>
+
+      <section id="detection" class="tab-panel" hidden><div class="view-intro"><div><span class="eyebrow">LÓGICA DE DETECCIÓN</span><h2>De la perturbación a la identificación</h2><p>El resultado combina ubicación, canales dominantes y persistencia. El nombre del fenómeno es una hipótesis de esta demo, no un diagnóstico de campo.</p></div></div><div class="detect-grid"><section class="card evidence-card"><span class="eyebrow">DECISIÓN ACTUAL</span><h3 id="decisionTitle">Sin evento</h3><p id="decisionText"></p><div id="evidenceSteps" class="evidence-steps"></div><div class="timeline-heading"><strong>Cronología</strong><span id="firstDetection">Primera detección: —</span></div><div id="eventTimeline" class="event-timeline"></div></section><section class="card contribution-card"><span class="eyebrow">EN EL SEGMENTO SELECCIONADO</span><h3 id="contributionTitle">Aportes al índice D</h3><p>Desviación normalizada × peso de cada canal.</p><div id="contributionBars" class="contribution-bars"></div><div class="score-total"><span>Índice D(z,t)</span><strong id="pointScore">0,00</strong></div><p id="ruleText" class="rule-text"></p></section></div><section class="card signatures-card"><div class="panel-head"><div><span class="eyebrow">GUÍA DE LECTURA</span><h3>Cómo distinguir las firmas</h3></div><span>Reglas ilustrativas</span></div><div class="signature-list"><div><strong>Tren</strong><span>Cresta DAS intensa que avanza de km en km.</span></div><div><strong>Excavación</strong><span>Vibración y deformación localizadas y sostenidas.</span></div><div><strong>Ladera</strong><span>Deformación lenta sobre un tramo ancho.</span></div><div><strong>Foco térmico</strong><span>Temperatura local sostenida.</span></div><div><strong>Pérdida óptica</strong><span>Escalón de pérdida en la traza OTDR.</span></div><div><strong>Corte de fibra</strong><span>Fin abrupto del retorno antes del splitter.</span></div><div><strong>Vibración extensa</strong><span>Muchos segmentos DAS activados a la vez.</span></div></div></section></section>
+
+      <section id="method" class="tab-panel" hidden><div class="view-intro"><div><span class="eyebrow">CÓMO ESTÁ CONSTRUIDO</span><h2>Un modelo didáctico, con supuestos visibles</h2><p>Las señales son sintéticas y reproducibles; los números sirven para explorar la lógica, no para operar una infraestructura real.</p></div></div><div class="method-grid"><article class="card method-item"><b>01</b><h3>Referencia espacial</h3><p>Para cada canal se define un valor sano x<sub>ref</sub>(z). El fenómeno agrega una perturbación cuya forma depende de la ubicación y el tiempo.</p></article><article class="card method-item"><b>02</b><h3>Normalización</h3><p>d<sub>i</sub>(z,t) = min(1, |x<sub>i</sub> − x<sub>i,ref</sub>| / escala<sub>i</sub>). Las escalas convierten magnitudes con unidades distintas en valores comparables.</p></article><article class="card method-item"><b>03</b><h3>Índice global</h3><p>D(z,t) = Σ w<sub>i</sub>d<sub>i</sub>(z,t), con pesos que suman 1. El índice permite localizar y seguir una zona; siempre se conservan los canales originales.</p></article><article class="card method-item"><b>04</b><h3>Reglas de evento</h3><p>Una anomalía fija exige 12 s de persistencia. El corte se reconoce por la terminación de la traza OTDR; el tren, por una cresta DAS móvil.</p></article></div><div class="method-bottom"><section class="card"><span class="eyebrow">INSTRUMENTACIÓN REAL</span><h3>Qué mediría cada sistema</h3><p>OTDR observa retrodispersión Rayleigh de intensidad y estima pérdidas o cortes. DAS requiere interrogación sensible a fase para detectar vibración; DTS y DSS requieren instrumentos adicionales para temperatura y deformación. Una traza OTDR convencional por sí sola no identifica un tren.</p></section><section class="card"><span class="eyebrow">LÍMITES Y CALIBRACIÓN</span><h3>Antes de una aplicación de campo</h3><p>El alcance termina en el splitter: tras él se suman retornos de varias ramas. Calibrar umbrales con datos medidos, estudiar falsos positivos y compensación térmica. Los casos son hipótesis sintéticas; no constituyen una predicción validada de fallas ni un diagnóstico operativo.</p></section></div><section class="card glossary-card"><span class="eyebrow">GLOSARIO PARA LA PRESENTACIÓN</span><h3>Qué representa cada canal</h3><div class="glossary-grid"><div><strong>OTDR · α(z,t)</strong><span>Atenuación óptica local estimada, en dB/km. El OTDR convencional observa la intensidad retrodispersada y permite ubicar pérdidas y cortes.</span></div><div><strong>DAS · V(z,t)</strong><span>Vibración dinámica, en unidades arbitrarias en esta demo. Requiere un interrogador sensible a fase; la cresta móvil ilustra el paso de un tren.</span></div><div><strong>DSS · ε(z,t)</strong><span>Deformación de la fibra, en microdeformación (µε). Puede reflejar tensión mecánica, movimiento de terreno o curvatura.</span></div><div><strong>DTS · T(z,t)</strong><span>Temperatura distribuida, en °C. Un foco térmico cambia este canal y puede afectar la deformación aparente.</span></div></div><p><strong>dᵢ</strong> es la desviación normalizada de cada canal respecto a la fibra sana. <strong>D(z,t)</strong> suma las desviaciones ponderadas; indica anomalía multivariable y no una probabilidad de corte. DAS, DSS y DTS no se obtienen de un OTDR convencional sin instrumentación adicional.</p></section><div class="source-links"><a href="https://doi.org/10.1109/RI2C51727.2021.9559776" target="_blank" rel="noopener">Monitoreo PON con IoT ↗</a><a href="https://doi.org/10.1109/JPHOT.2022.3202177" target="_blank" rel="noopener">Detección y localización PON ↗</a><a href="https://www.mdpi.com/2076-3417/10/2/448" target="_blank" rel="noopener">Trenes con DAS ↗</a><a href="https://www.nature.com/articles/s41598-017-12610-1" target="_blank" rel="noopener">Laderas con fibra ↗</a><a href="https://www.mdpi.com/1424-8220/19/10/2320" target="_blank" rel="noopener">Fuego en túnel con DTS ↗</a><a href="https://www.viavisolutions.com/en-us/literature/fiber-otdr-testing-tips-and-tricks-quick-references-en.pdf" target="_blank" rel="noopener">Pérdidas con OTDR ↗</a></div></section>
+    </main>
+    <footer>FibraLab · OLT a splitter, 8 km · Datos y eventos sintéticos</footer>
+  </div>
+  <script>
+// Datos sintéticos para explorar sensado distribuido. No modela un interrogador real.
+const LENGTH_KM = 8;
+const SPLITTER_KM = LENGTH_KM;
+const DZ_KM = 0.05;
+const END_S = 320;
+const DT_S = 2;
+const Z = Array.from({ length: Math.round(LENGTH_KM / DZ_KM) + 1 }, (_, i) => +(i * DZ_KM).toFixed(2));
+const T = Array.from({ length: END_S / DT_S + 1 }, (_, i) => i * DT_S);
+
+const CHANNELS = {
+  alpha: { label: 'Atenuación', short: 'OTDR', unit: 'dB/km', scale: 0.25, weight: 0.23, color: '#4cb9ed' },
+  temp: { label: 'Temperatura', short: 'DTS', unit: '°C', scale: 20, weight: 0.22, color: '#f7a45c' },
+  strain: { label: 'Deformación', short: 'DSS', unit: 'µε', scale: 100, weight: 0.30, color: '#ac9afa' },
+  vib: { label: 'Vibración', short: 'DAS', unit: 'u. a.', scale: 0.9, weight: 0.25, color: '#54d8bd' },
+};
+
+const SCENARIOS = {
+  normal: { label: 'Referencia sana', icon: '○', center: null, start: null, focus: 'vib', demoTime: 30, kind: 'baseline',
+    summary: 'Solo variación ambiental y ruido instrumental sintético.', expected: 'Ningún detector debe activarse.' },
+  train: { label: 'Tren', icon: '▣', center: null, start: 20, focus: 'vib', demoTime: 110, kind: 'moving',
+    summary: 'Una fuente móvil produce una banda diagonal de vibración y deformación transitoria.', expected: 'Patrón móvil coherente; evento operativo, no falla.' },
+  excavation: { label: 'Excavación', icon: '⌁', center: 4.5, start: 120, focus: 'vib', demoTime: 180, kind: 'local',
+    summary: 'Una obra cercana agita el terreno y somete el cable a deformación localizada.', expected: 'Vibración y deformación sostenidas cerca del km 4,50.' },
+  slope: { label: 'Ladera', icon: '◢', center: 3.2, start: 85, focus: 'strain', demoTime: 240, kind: 'gradual',
+    summary: 'El terreno se desplaza lentamente y deforma una sección amplia de la fibra.', expected: 'Deformación creciente en una zona más ancha que una falla puntual.' },
+  mechanical: { label: 'Degradación', icon: '✧', center: 5.8, start: 70, focus: 'strain', demoTime: 240, kind: 'gradual',
+    summary: 'Una zona del cable acumula deformación y pérdida óptica de manera gradual.', expected: 'Deformación y atenuación aumentan juntas en el km 5,80.' },
+  thermal: { label: 'Foco térmico', icon: '♨', center: 6.1, start: 105, focus: 'temp', demoTime: 180, kind: 'local',
+    summary: 'Una fuente de calor cerca del túnel eleva la temperatura local de la fibra.', expected: 'Temperatura anómala sostenida cerca del km 6,10.' },
+  loss: { label: 'Pérdida óptica', icon: '◇', center: 7.0, start: 95, focus: 'alpha', demoTime: 180, kind: 'local',
+    summary: 'Una curvatura o daño del cable incrementa la pérdida de luz en un tramo corto.', expected: 'Atenuación localizada cerca del km 7,00.' },
+  cut: { label: 'Corte de fibra', icon: '✕', center: 6.6, start: 130, focus: 'alpha', demoTime: 170, kind: 'local',
+    summary: 'La fibra de alimentación se interrumpe antes del splitter.', expected: 'La traza OTDR termina cerca del km 6,60; no hay retorno desde el tramo posterior.' },
+  seismic: { label: 'Vibración extensa', icon: '◉', center: 4.0, start: 130, focus: 'vib', demoTime: 156, kind: 'transient',
+    summary: 'Un pulso de vibración atraviesa buena parte del trazado durante varios segundos.', expected: 'DAS elevado en muchos segmentos al mismo tiempo.' },
+};
+
+const gauss = (x, sigma) => Math.exp(-0.5 * (x / sigma) ** 2);
+const ramp = (t, start, duration) => Math.max(0, Math.min(1, (t - start) / duration));
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const noise = (z, t, k) => {
+  const v = Math.sin(z * 127.1 + t * 17.73 + k * 41.71) * 43758.5453;
+  return (v - Math.floor(v)) * 2 - 1;
+};
+
+function baseline(z) {
+  return {
+    alpha: 0.20 + 0.012 * Math.sin(z * 1.3),
+    temp: 18 + 1.4 * Math.sin(z * 0.8),
+    strain: 20 + 5 * Math.sin(z * 1.1),
+    vib: 0.045,
+  };
+}
+
+function trainPosition(t, speedKmh = 120) {
+  const position = ((t - 20) * speedKmh) / 3600;
+  return position >= 0 && position <= LENGTH_KM ? position : null;
+}
+
+function sample(z, t, scenario = 'normal', speedKmh = 120) {
+  const ref = baseline(z);
+  const train = scenario === 'train' ? trainPosition(t, speedKmh) : null;
+  const g = train === null ? 0 : gauss(z - train, 0.105);
+  const axle = train === null ? 0 : 0.70 + 0.30 * Math.sin((z - train) * 125) ** 2;
+  const value = {
+    alpha: ref.alpha + 0.002 * noise(z, t, 1) + 0.004 * g,
+    temp: ref.temp + 0.22 * Math.sin(t / 62) + 0.08 * noise(z, t, 2) + 0.18 * g,
+    strain: ref.strain + 1.3 * noise(z, t, 3) + 24 * g,
+    vib: Math.max(0, ref.vib + 0.018 * noise(z, t, 4) + 0.78 * g * axle),
+  };
+
+  if (scenario === 'excavation') {
+    const p = ramp(t, 120, 30) * gauss(z - 4.5, 0.15);
+    value.vib += p * (0.50 + 0.12 * Math.sin(t * 0.38) ** 2);
+    value.strain += 48 * p;
+    value.alpha += 0.055 * p;
+  } else if (scenario === 'slope') {
+    const p = ramp(t, 85, 150) * gauss(z - 3.2, 0.36);
+    value.strain += 148 * p;
+    value.vib += 0.065 * p;
+    value.alpha += 0.035 * p;
+  } else if (scenario === 'mechanical') {
+    const p = ramp(t, 70, 210) * gauss(z - 5.8, 0.19);
+    value.strain += 126 * p;
+    value.alpha += 0.15 * p;
+    value.vib += 0.055 * p;
+  } else if (scenario === 'thermal') {
+    const p = ramp(t, 105, 45) * gauss(z - 6.1, 0.18);
+    value.temp += 18 * p;
+    value.strain += 7 * p; // Acoplamiento aparente, simplificado.
+  } else if (scenario === 'loss') {
+    const p = ramp(t, 95, 55) * gauss(z - 7.0, 0.12);
+    value.alpha += 0.24 * p;
+  } else if (scenario === 'cut') {
+    const p = ramp(t, 130, 4) * gauss(z - 6.6, 0.06);
+    value.alpha += 0.7 * p;
+    value.strain += 38 * p;
+  } else if (scenario === 'seismic') {
+    const p = gauss(t - (144 + 1.2 * z), 17) * (0.74 + 0.26 * Math.sin(z * 9) ** 2);
+    value.vib += 0.78 * p;
+    value.strain += 8 * p;
+  }
+  return value;
+}
+
+// Traza OTDR ilustrativa: el retorno Rayleigh decae por la pérdida de ida y
+// vuelta. Una pérdida localizada crea un escalón; un corte deja sólo piso de
+// ruido después del punto de interrupción. No representa pulsos ni zona muerta.
+function otdrTrace(t, scenario = 'normal') {
+  const active = (start, duration) => ramp(t, start, duration);
+  const step = (z, center, width = 0.045) => 0.5 * (1 + Math.tanh((z - center) / width));
+  return Z.map((z) => {
+    const reference = -2 * (0.20 * z + 0.012 * (1 - Math.cos(1.3 * z)) / 1.3)
+      - 0.28 * step(z, 2.2);
+    let measured = reference + 0.025 * noise(z, t, 9);
+    if (scenario === 'loss') measured -= 2 * 1.35 * active(95, 55) * step(z, 7);
+    if (scenario === 'mechanical') measured -= 2 * 0.85 * active(70, 210) * step(z, 5.8);
+    if (scenario === 'excavation') measured -= 2 * 0.18 * active(120, 30) * step(z, 4.5);
+    if (scenario === 'cut' && t >= 130) {
+      const progress = active(130, 4);
+      const cutoff = 6.6;
+      measured = measured * (1 - progress * step(z, cutoff, 0.018))
+        + (-26 + 0.12 * noise(z, t, 10)) * progress * step(z, cutoff, 0.018);
+      measured += 5.5 * progress * gauss(z - cutoff, 0.025);
+    }
+    return { z, reference, measured };
+  });
+}
+
+function otdrEvidence(t, scenario = 'normal') {
+  const trace = otdrTrace(t, scenario);
+  const cutoff = trace.findIndex((point, i) => i > 4 && i < trace.length - 4 &&
+    point.measured - point.reference < -10 &&
+    trace.slice(i, i + 4).every((next) => next.measured - next.reference < -10));
+  if (cutoff >= 0) return { kind: 'cut', z: trace[cutoff].z, lossDb: null };
+  const losses = trace.map((point) => Math.max(0, (point.reference - point.measured) / 2));
+  const lossDb = Math.max(...losses);
+  const centerIndex = losses.findIndex((loss) => loss >= lossDb / 2);
+  return { kind: lossDb >= 0.35 ? 'loss' : 'normal',
+    z: trace[centerIndex].z, lossDb };
+}
+
+function isObservable(z, t, scenario = 'normal') {
+  return !(scenario === 'cut' && t >= 134 && z > 6.65);
+}
+
+function evaluate(z, t, scenario = 'normal', speedKmh = 120) {
+  const value = sample(z, t, scenario, speedKmh);
+  const ref = baseline(z);
+  const norm = {};
+  let score = 0;
+  for (const [key, config] of Object.entries(CHANNELS)) {
+    norm[key] = clamp(Math.abs(value[key] - ref[key]) / config.scale, 0, 1);
+    score += config.weight * norm[key];
+  }
+  const observable = isObservable(z, t, scenario);
+  if (!observable) {
+    for (const key of Object.keys(norm)) norm[key] = 0;
+    score = 0;
+  }
+  const train = scenario === 'train' ? trainPosition(t, speedKmh) : null;
+  const trainZone = train !== null && Math.abs(z - train) <= 0.22;
+  return { value, ref, norm, score, trainZone, observable };
+}
+
+function alertType(norm, width = 0) {
+  if (norm.temp >= 0.58) return 'Foco térmico';
+  if (norm.alpha >= 0.60 && norm.strain < 0.32) return 'Pérdida óptica';
+  if (norm.strain >= 0.42 && norm.vib >= 0.32) return 'Actividad cercana';
+  if (norm.strain >= 0.42 && norm.alpha >= 0.30) return 'Degradación mecánica';
+  if (norm.strain >= 0.42) return 'Movimiento del terreno';
+  if (norm.vib >= 0.58 && width >= 0.5) return 'Vibración extensa';
+  if (norm.vib >= 0.58) return 'Vibración localizada';
+  return 'Desviación multivariable';
+}
+
+function isCandidate(result, sensitivity = 1) {
+  const component = Math.max(...Object.values(result.norm));
+  return !result.trainZone && (result.score >= 0.30 / sensitivity || component >= 0.60 / sensitivity);
+}
+
+// Un mismo segmento debe cumplir la regla durante seis muestras (12 s).
+function alertsAt(t, scenario = 'normal', speedKmh = 120, sensitivity = 1) {
+  const time = clamp(Math.round(t / DT_S) * DT_S, 0, END_S);
+  const events = [];
+  for (const z of Z) {
+    const current = evaluate(z, time, scenario, speedKmh);
+    if (!isCandidate(current, sensitivity)) continue;
+    let persistent = true;
+    for (let back = DT_S; back < 12; back += DT_S) {
+      if (time - back < 0 || !isCandidate(evaluate(z, time - back, scenario, speedKmh), sensitivity)) {
+        persistent = false;
+        break;
+      }
+    }
+    if (persistent) events.push({ z, ...current });
+  }
+  const widespreadVibration = events.filter((event) => event.norm.vib >= 0.58 && event.norm.vib > event.norm.strain && event.norm.vib > event.norm.temp);
+  if (widespreadVibration.length >= 25 && widespreadVibration.at(-1).z - widespreadVibration[0].z >= 2) {
+    const peak = widespreadVibration.reduce((best, event) => event.norm.vib > best.norm.vib ? event : best);
+    return [{ kind: 'alert', start: widespreadVibration[0].z, end: widespreadVibration.at(-1).z, z: peak.z,
+      type: 'Vibración extensa', score: peak.score, norm: peak.norm,
+      severity: peak.norm.vib >= 0.9 ? 'Crítica' : 'Significativa' }];
+  }
+  const groups = [];
+  for (const event of events) {
+    const last = groups.at(-1);
+    if (last && event.z - last.end <= DZ_KM + 0.001) {
+      last.end = event.z;
+      if (Math.max(event.score, ...Object.values(event.norm)) > Math.max(last.peak.score, ...Object.values(last.peak.norm))) last.peak = event;
+    } else groups.push({ start: event.z, end: event.z, peak: event });
+  }
+  return groups.map((group) => ({
+    kind: 'alert', start: group.start, end: group.end, z: group.peak.z,
+    type: alertType(group.peak.norm, group.end - group.start),
+    score: group.peak.score, norm: group.peak.norm,
+    severity: group.peak.score >= 0.5 || Math.max(...Object.values(group.peak.norm)) >= 0.9 ? 'Crítica' : 'Significativa',
+  }));
+}
+
+// Detecta una cresta DAS intensa que se desplaza de forma coherente durante 8 s.
+function movingEventAt(t, scenario = 'normal', speedKmh = 120) {
+  if (t < 36) return null;
+  const peakAt = (time) => {
+    let peak = { z: 0, vib: 0, mean: 0 };
+    for (const z of Z) {
+      const vib = sample(z, time, scenario, speedKmh).vib;
+      peak.mean += vib / Z.length;
+      if (vib > peak.vib) { peak.z = z; peak.vib = vib; }
+    }
+    return peak;
+  };
+  const now = peakAt(t), prior = peakAt(t - 8), older = peakAt(t - 16);
+  const estimatedSpeed = (now.z - prior.z) / 8 * 3600;
+  const previousSpeed = (prior.z - older.z) / 8 * 3600;
+  if (now.vib < 0.42 || prior.vib < 0.42 || older.vib < 0.42 ||
+      now.vib < now.mean * 3 || prior.vib < prior.mean * 3 || older.vib < older.mean * 3 ||
+      estimatedSpeed < 55 || estimatedSpeed > 190 || Math.abs(estimatedSpeed - previousSpeed) > 50) return null;
+  return { kind: 'operational', type: 'Tren en movimiento', severity: 'Informativa', z: now.z,
+    start: Math.max(0, now.z - 0.15), end: Math.min(LENGTH_KM, now.z + 0.15), speed: estimatedSpeed,
+    score: evaluate(now.z, t, scenario, speedKmh).score };
+}
+
+function detectionsAt(t, scenario = 'normal', speedKmh = 120, sensitivity = 1) {
+  const optical = otdrEvidence(t, scenario);
+  if (optical.kind === 'cut') return [{ kind: 'alert', type: 'Corte de fibra', severity: 'Crítica',
+    z: optical.z, start: optical.z, end: optical.z, score: 1, norm: { alpha: 1, temp: 0, strain: 0, vib: 0 } }];
+  const moving = movingEventAt(t, scenario, speedKmh);
+  return [...(moving ? [moving] : []), ...alertsAt(t, scenario, speedKmh, sensitivity)];
+}
+
+function sensitivityCurve(channel, sensitivity = 1) {
+  const config = CHANNELS[channel];
+  return Array.from({ length: 51 }, (_, i) => {
+    const fraction = i / 50;
+    return { x: fraction * config.scale, d: fraction * config.weight, threshold: 0.60 / sensitivity * config.scale };
+  });
+}
+
+
+const $ = (id) => document.getElementById(id);
+const keys = Object.keys(CHANNELS);
+const state = { scenario: 'excavation', time: 180, z: 4.5, speed: 120, playing: false, heatChannel: 'vib', tab: 'map' };
+let heatCache = null;
+let firstDetectionCache = null;
+let lastFrame = 0;
+const fmt = (x, digits = 2) => Number(x).toLocaleString('es-CL', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+const clampUI = (x, min, max) => Math.max(min, Math.min(max, x));
+const nearestZ = (x) => Z[clampUI(Math.round(x / 0.05), 0, Z.length - 1)];
+const nearestT = (x) => T[clampUI(Math.round(x / DT_S), 0, T.length - 1)];
+const scenario = () => SCENARIOS[state.scenario];
+const eventPosition = () => state.scenario === 'train' ? trainPosition(state.time, state.speed) : scenario().center;
+const currentDetections = () => detectionsAt(state.time, state.scenario, state.speed);
+const mainDetection = (items) => items.find((item) => item.kind === 'alert') || items[0] || null;
+
+const physicalText = {
+  normal: 'La fibra permanece en su referencia. Las pequeñas oscilaciones simulan ruido y cambios ambientales normales.',
+  train: 'La carga móvil excita la vía y genera una respuesta DAS que avanza con el tren; la deformación es transitoria.',
+  excavation: 'La obra introduce vibración repetida y esfuerzo local en el terreno que rodea el cable.',
+  slope: 'La ladera transmite deformación lenta a una sección relativamente amplia de la fibra.',
+  mechanical: 'Una sección del cable se deforma progresivamente; en el modelo también aumenta su pérdida óptica.',
+  thermal: 'La fuente de calor eleva la temperatura medida cerca del túnel. Parte de la respuesta de deformación puede ser aparente.',
+  loss: 'Una curvatura o defecto provoca mayor pérdida de luz en una posición localizada.',
+  cut: 'La fibra se rompe antes del splitter. El retorno Rayleigh desaparece detrás del corte y el evento puede producir un pico reflectivo.',
+  seismic: 'Una perturbación vibratoria se propaga por varios kilómetros. Su extensión espacial la distingue de una fuente puntual.',
+};
+
+function setup() {
+  $('scenarioChoices').innerHTML = Object.entries(SCENARIOS).map(([id, item]) => `<button class="scenario-choice ${id === state.scenario ? 'active' : ''}" data-scenario="${id}" type="button" aria-pressed="${id === state.scenario}"><b aria-hidden="true">${item.icon}</b><span>${item.label}</span></button>`).join('');
+  document.querySelectorAll('.scenario-choice').forEach((button) => button.addEventListener('click', () => selectScenario(button.dataset.scenario)));
+  document.querySelectorAll('.tab').forEach((button) => button.addEventListener('click', () => selectTab(button.dataset.tab)));
+  $('time').addEventListener('input', (event) => { state.time = Number(event.target.value); render(); });
+  $('trainSpeed').addEventListener('input', (event) => { state.speed = Number(event.target.value); heatCache = null; firstDetectionCache = null; render(); });
+  $('heatChannel').addEventListener('change', (event) => { state.heatChannel = event.target.value; heatCache = null; render(); });
+  $('play').addEventListener('click', togglePlay);
+  $('goDetection').addEventListener('click', () => selectTab('detection'));
+  $('fiberMap').addEventListener('click', (event) => {
+    const svg = event.currentTarget, point = svg.createSVGPoint(); point.x = event.clientX; point.y = event.clientY;
+    const transformed = point.matrixTransform(svg.getScreenCTM().inverse());
+    const compact = svg.dataset.compact === 'true';
+    state.z = nearestZ((transformed.x - (compact ? 42 : 70)) / (compact ? 456 : 860) * LENGTH_KM);
+    render();
+  });
+  $('heatmap').addEventListener('click', (event) => {
+    const canvas = event.currentTarget, box = canvas._box, rect = canvas.getBoundingClientRect();
+    const x = event.clientX - rect.left, y = event.clientY - rect.top;
+    if (x < box.x || x > box.x + box.w || y < box.y || y > box.y + box.h) return;
+    state.time = nearestT((x - box.x) / box.w * END_S);
+    state.z = nearestZ((1 - (y - box.y) / box.h) * LENGTH_KM);
+    $('time').value = state.time; render();
+  });
+  $('scoreProfile').addEventListener('click', (event) => {
+    const canvas = event.currentTarget, box = canvas._box, rect = canvas.getBoundingClientRect(), x = event.clientX - rect.left;
+    if (x < box.x || x > box.x + box.w) return;
+    state.z = nearestZ((x - box.x) / box.w * LENGTH_KM); render();
+  });
+  window.addEventListener('resize', render);
+  render();
+}
+
+function selectScenario(id) {
+  if (!SCENARIOS[id]) return;
+  state.scenario = id; state.time = SCENARIOS[id].demoTime;
+  state.z = SCENARIOS[id].center ?? (id === 'train' ? trainPosition(state.time, state.speed) : 4);
+  state.heatChannel = SCENARIOS[id].focus;
+  $('time').value = state.time; $('heatChannel').value = state.heatChannel;
+  heatCache = null; firstDetectionCache = null;
+  document.querySelectorAll('.scenario-choice').forEach((button) => { const selected = button.dataset.scenario === id; button.classList.toggle('active', selected); button.setAttribute('aria-pressed', selected); });
+  render();
+}
+
+function selectTab(tab) {
+  state.tab = tab;
+  document.querySelectorAll('.tab').forEach((button) => { const selected = button.dataset.tab === tab; button.classList.toggle('active', selected); button.setAttribute('aria-selected', selected); });
+  document.querySelectorAll('.tab-panel').forEach((panel) => panel.hidden = panel.id !== tab);
+  render();
+}
+
+function togglePlay() {
+  state.playing = !state.playing;
+  $('play').innerHTML = state.playing ? '❚❚ <span>Pausar</span>' : '▶ <span>Reproducir</span>';
+  $('play').setAttribute('aria-label', state.playing ? 'Pausar simulación' : 'Reproducir simulación');
+  if (state.playing) { lastFrame = 0; requestAnimationFrame(playFrame); }
+}
+
+function playFrame(now) {
+  if (!state.playing) return;
+  if (!lastFrame || now - lastFrame >= 110) {
+    state.time = state.time >= END_S ? 0 : state.time + DT_S;
+    $('time').value = state.time; lastFrame = now; render();
+  }
+  requestAnimationFrame(playFrame);
+}
+
+function routePoint(z, compact = false) {
+  const x = (compact ? 42 : 70) + z / LENGTH_KM * (compact ? 456 : 860);
+  const y = (compact ? 130 : 168) + (compact ? 10 : 15) * Math.sin(z * 1.22) - (compact ? 3 : 5) * Math.cos(z * 2.7);
+  return { x, y };
+}
+
+function routePath(start = 0, end = LENGTH_KM, offset = 0, compact = false) {
+  const points = [];
+  for (let z = start; z <= end + 0.001; z += 0.05) { const p = routePoint(z, compact); points.push(`${points.length ? 'L' : 'M'}${p.x.toFixed(1)} ${(p.y + offset).toFixed(1)}`); }
+  if (points.length < 2) { const p = routePoint(end, compact); points.push(`L${p.x.toFixed(1)} ${(p.y + offset).toFixed(1)}`); }
+  return points.join(' ');
+}
+
+function drawMap(detections) {
+  const item = scenario(), markerZ = eventPosition(), detection = mainDetection(detections);
+  const compact = $('fiberMap').getBoundingClientRect().width < 500;
+  $('fiberMap').setAttribute('viewBox', compact ? '0 0 540 270' : '0 0 1000 330');
+  $('fiberMap').dataset.compact = String(compact);
+  const sites = compact ? [0, 2, 4, 6, 8].map((z) => ({ z, label: z === 8 ? 'Splitter' : `${z} km` })) : [{ z: 0, label: 'OLT' }, { z: 2, label: 'Puente' }, { z: 3.2, label: 'Ladera' }, { z: 4.5, label: 'Obra' }, { z: 6.1, label: 'Túnel' }, { z: 8, label: 'Splitter' }];
+  const siteMarks = sites.map(({ z, label }) => { const p = routePoint(z, compact); return compact
+    ? `<line x1="${p.x}" y1="${p.y + 6}" x2="${p.x}" y2="${p.y + 26}" stroke="#617e95"/><circle cx="${p.x}" cy="${p.y}" r="3" fill="#c2e6ed"/><text x="${p.x}" y="${p.y + 50}" text-anchor="middle" fill="#a6c1cd" font-size="19">${label}</text>`
+    : `<line x1="${p.x}" y1="${p.y + 7}" x2="${p.x}" y2="${p.y + 30}" stroke="#617e95"/><circle cx="${p.x}" cy="${p.y}" r="3" fill="#c2e6ed"/><text x="${p.x}" y="${p.y + 48}" text-anchor="middle" fill="#9bb6c8" font-size="15">${label}</text><text x="${p.x}" y="${p.y + 65}" text-anchor="middle" fill="#6d8ba4" font-size="12">${fmt(z, z === 3.2 || z === 4.5 || z === 6.1 ? 1 : 0)} km</text>`; }).join('');
+  const detectionPath = detection ? `<path d="${routePath(detection.start, detection.end, 0, compact)}" stroke="${detection.kind === 'operational' ? '#65d9d7' : '#f9b278'}" stroke-width="${compact ? 11 : 15}" stroke-linecap="round" fill="none" opacity=".42"/>` : '';
+  const cutPath = state.scenario === 'cut' && state.time >= 134
+    ? `<path d="${routePath(6.65,LENGTH_KM,0,compact)}" stroke="#102438" stroke-width="9" fill="none"/><path d="${routePath(6.65,LENGTH_KM,0,compact)}" stroke="#7893a5" stroke-width="4" stroke-dasharray="8 6" fill="none"/>` : '';
+  const p = markerZ === null ? null : routePoint(markerZ, compact);
+  const active = item.start !== null && state.time >= item.start && (item.kind !== 'transient' || state.time <= 190) && p;
+  const sourceMark = p ? `<circle cx="${p.x}" cy="${p.y}" r="${active ? 27 : 21}" fill="${active ? '#f3a96d' : '#5a7a8c'}" opacity=".13"/><circle cx="${p.x}" cy="${p.y}" r="${compact ? 9 : 12}" fill="${active ? '#f3ae75' : '#8ba8b5'}" stroke="#f2f7f7" stroke-width="2"/><text x="${p.x}" y="${p.y - (compact ? 32 : 39)}" text-anchor="middle" fill="#eaf8fb" font-size="${compact ? 22 : 17}" font-weight="700">${item.label}</text>` : '';
+  const selected = routePoint(state.z, compact);
+  const ground = compact ? 'M0 210 Q100 180 180 222 T360 205 T540 218 L540 270 L0 270Z' : 'M0 230 Q150 170 280 245 T560 225 T1000 235 L1000 330 L0 330Z';
+  $('fiberMap').innerHTML = `<defs><linearGradient id="land" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#193b4e"/><stop offset="1" stop-color="#112a3b"/></linearGradient><filter id="glow"><feGaussianBlur stdDeviation="4"/></filter></defs><rect x="1" y="1" width="${compact ? 538 : 998}" height="${compact ? 268 : 328}" rx="13" fill="#102438" stroke="#2f5164"/><path d="${ground}" fill="url(#land)" opacity=".8"/><path d="${routePath(0,LENGTH_KM,compact ? -31 : -42,compact)}" stroke="#758ca0" stroke-width="4" stroke-dasharray="11 8" fill="none" opacity=".8"/><path d="${routePath(0,LENGTH_KM,0,compact)}" stroke="#3ae1da" stroke-width="14" fill="none" opacity=".22" filter="url(#glow)"/><path d="${routePath(0,LENGTH_KM,0,compact)}" stroke="#5be0d8" stroke-width="5" fill="none"/>${cutPath}${detectionPath}${siteMarks}${sourceMark}<circle cx="${selected.x}" cy="${selected.y}" r="5" fill="#0e2333" stroke="#f5fbfd" stroke-width="2"/><text x="${compact ? 42 : 70}" y="35" fill="#94b6c5" font-size="${compact ? 18 : 13}" font-weight="700" letter-spacing="2">CORREDOR DE 8 KM</text><text x="${compact ? 498 : 930}" y="35" fill="#88aabe" font-size="${compact ? 17 : 12}" text-anchor="end">t = ${state.time} s</text>`;
+  $('mapTime').textContent = `t = ${state.time} s`;
+}
+
+function graphicSymbol(id) {
+  switch (id) {
+    case 'train': return '<line x1="195" y1="68" x2="487" y2="68" stroke="#809caf" stroke-width="4"/><rect x="265" y="27" width="150" height="39" rx="8" fill="#7ecfdf"/><rect x="283" y="36" width="31" height="16" rx="2" fill="#174258"/><rect x="322" y="36" width="31" height="16" rx="2" fill="#174258"/><rect x="361" y="36" width="31" height="16" rx="2" fill="#174258"/><circle cx="295" cy="70" r="7" fill="#b7d1db"/><circle cx="385" cy="70" r="7" fill="#b7d1db"/><path d="M310 80q30 15 0 30M370 80q-30 15 0 30" fill="none" stroke="#6fd3d1" stroke-width="3"/>';
+    case 'excavation': return '<path d="M250 79 L410 79 L390 104 L275 104Z" fill="#7a5442"/><rect x="277" y="32" width="77" height="38" rx="7" fill="#e9b66c"/><circle cx="291" cy="76" r="11" fill="#364f60"/><circle cx="344" cy="76" r="11" fill="#364f60"/><path d="M352 40 L410 56 L429 86" fill="none" stroke="#e9b66c" stroke-width="8" stroke-linecap="round"/><path d="M420 83 L441 99 L423 99" fill="#dfaf72"/><path d="M310 99q30 23 0 39M370 99q-30 23 0 39" stroke="#f0b77c" stroke-width="3" fill="none"/>';
+    case 'slope': return '<path d="M160 89 L275 18 L382 89Z" fill="#3d705f"/><path d="M296 89 L420 37 L515 89Z" fill="#326652"/><path d="M322 35l30 18-12 13" fill="none" stroke="#f5ba81" stroke-width="6"/><path d="M275 107l40 18m-25-5l40 18" stroke="#e2bb88" stroke-width="4"/>';
+    case 'mechanical': return '<path d="M307 45l31 25-22 10 30 27" stroke="#f7a77f" stroke-width="7" fill="none" stroke-linecap="round"/><path d="M376 45l-20 20 24 12-25 27" stroke="#d68180" stroke-width="5" fill="none"/><circle cx="340" cy="125" r="27" fill="#b64e6a" opacity=".17"/>';
+    case 'thermal': return '<path d="M337 24c-14 26-39 29-39 60 0 21 17 34 41 34s42-15 42-38c0-23-19-36-24-50 1 18-13 24-20 32-7-11-4-23 0-38Z" fill="#f59c5c"/><path d="M342 66c-6 12-19 18-19 30 0 11 8 17 18 17 11 0 19-8 19-18 0-12-11-18-18-29Z" fill="#ffe2a4"/><path d="M250 78q-14-15 0-30M430 78q14-15 0-30" fill="none" stroke="#f6b46b" stroke-width="3"/>';
+    case 'loss': return '<path d="M250 98 C300 98 310 83 340 70 C375 55 393 72 367 91 C341 109 347 95 415 95" fill="none" stroke="#7fddda" stroke-width="8"/><path d="M330 45l20 25 19-25" fill="none" stroke="#f3a477" stroke-width="5"/><circle cx="352" cy="84" r="32" fill="#ef9c71" opacity=".15"/>';
+    case 'cut': return '<path d="M277 64l49 43m0-43l-49 43M353 64l49 43m0-43l-49 43" stroke="#f3a477" stroke-width="7" stroke-linecap="round"/><path d="M338 115v35" stroke="#f3a477" stroke-width="4" stroke-dasharray="6 5"/>';
+    case 'seismic': return '<path d="M160 79q35-40 70 0t70 0t70 0t70 0t70 0" fill="none" stroke="#f1ae78" stroke-width="5"/><circle cx="340" cy="100" r="28" fill="none" stroke="#f1ae78" stroke-width="3" opacity=".8"/><circle cx="340" cy="100" r="48" fill="none" stroke="#f1ae78" stroke-width="2" opacity=".4"/>';
+    default: return '<path d="M250 86 Q340 65 430 86" fill="none" stroke="#75d9ba" stroke-width="5"/><circle cx="340" cy="80" r="14" fill="#4aca9c"/>';
+  }
+}
+
+function drawGraphic() {
+  const item = scenario(), active = item.start === null || state.time >= item.start;
+  $('eventGraphic').innerHTML = `<defs><linearGradient id="soil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#244657"/><stop offset="1" stop-color="#183447"/></linearGradient></defs><rect x="0" y="92" width="680" height="108" rx="10" fill="url(#soil)"/><path d="M0 92h680" stroke="#658575" stroke-width="3"/><path d="M28 149 H308 Q340 151 372 149 H652" fill="none" stroke="#55ded6" stroke-width="7"/><circle cx="340" cy="149" r="14" fill="#49d8cf" opacity=".27"/><text x="28" y="184" fill="#8fb2bc" font-size="13">FIBRA ÓPTICA BAJO EL TERRENO</text><g opacity="${active ? 1 : .36}">${graphicSymbol(state.scenario)}</g><path d="M340 113v21" stroke="${active ? '#f4ae79' : '#68889d'}" stroke-width="2" stroke-dasharray="5 4"/>`;
+  $('physicalExplanation').textContent = physicalText[state.scenario];
+  $('cutawayLocation').textContent = item.center === null ? (state.scenario === 'train' ? `Km ${fmt(eventPosition() ?? 0)}` : 'Fibra sana') : `Km ${fmt(item.center)}`;
+}
+
+function renderEvent(detections) {
+  const item = scenario(), detection = mainDetection(detections);
+  const started = item.start !== null && state.time >= item.start;
+  const ended = (item.kind === 'transient' && state.time > 190) || (item.kind === 'moving' && eventPosition() === null && state.time > 20);
+  $('eventTitle').textContent = item.label;
+  $('eventIcon').textContent = item.icon;
+  $('eventDescription').textContent = item.summary;
+  $('eventExpected').textContent = item.expected;
+  $('eventStart').textContent = item.start === null ? '—' : `${item.start} s`;
+  $('eventPosition').textContent = eventPosition() === null ? (item.kind === 'moving' ? 'En movimiento' : 'Toda la línea') : `Km ${fmt(eventPosition())}`;
+  $('eventKind').textContent = ({ baseline: 'Referencia', moving: 'Móvil', local: 'Local', gradual: 'Gradual', transient: 'Extenso' })[item.kind];
+  $('eventState').textContent = item.start === null ? 'Sin perturbación' : ended ? 'Evento finalizado' : started ? 'Fenómeno activo' : `Comienza a los ${item.start} s`;
+  $('eventState').style.background = started && !ended ? '#245b4f' : '#263d50';
+  $('eventState').style.color = started && !ended ? '#a8f4ce' : '#9cb1c3';
+
+  let title, detail;
+  if (detection) {
+    title = detection.type;
+    detail = detection.kind === 'operational'
+      ? `Patrón móvil detectado cerca del km ${fmt(detection.z)}. Velocidad inferida: ${Math.round(detection.speed)} km/h. Se clasifica como tránsito.`
+      : detection.type === 'Corte de fibra'
+        ? `El retorno OTDR termina cerca del km ${fmt(detection.z)}, antes del splitter. La zona posterior queda sin observación.`
+        : `Alerta ${detection.severity.toLowerCase()} entre los km ${fmt(detection.start)} y ${fmt(detection.end)}. La señal superó el umbral durante al menos 12 s.`;
+  } else if (item.kind === 'baseline') { title = 'Sin evento'; detail = 'Las cuatro señales permanecen próximas a sus referencias.'; }
+  else if (ended) { title = 'Evento terminado'; detail = 'La perturbación ya pasó. Avanza o retrocede en el tiempo para revisar su detección.'; }
+  else if (!started) { title = 'Aún no inicia'; detail = `El fenómeno comienza a los ${item.start} s. Recorre la línea de tiempo para verlo aparecer.`; }
+  else { title = 'Señal en observación'; detail = 'El fenómeno ya afecta a la fibra, pero la condición de detección aún no se cumple de forma suficiente.'; }
+  $('detectionHeadline').textContent = title;
+  $('detectionDetail').textContent = detail;
+  $('detectionLamp').className = `lamp${detection ? (detection.kind === 'operational' ? ' info' : ' on') : ''}`;
+  const z = detection?.z ?? eventPosition() ?? state.z;
+  const point = evaluate(z, state.time, state.scenario, state.speed);
+  $('miniSignals').innerHTML = keys.map((key) => `<div class="mini-signal"><strong style="color:${CHANNELS[key].color}">${CHANNELS[key].short}</strong><span>d = ${fmt(point.norm[key])}</span><i><em style="width:${Math.round(point.norm[key] * 100)}%;background:${CHANNELS[key].color}"></em></i></div>`).join('');
+}
+
+function canvasContext(canvas) {
+  const rect = canvas.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1);
+  canvas.width = Math.max(1, Math.round(rect.width * dpr)); canvas.height = Math.max(1, Math.round(rect.height * dpr));
+  const ctx = canvas.getContext('2d'); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { ctx, w: rect.width, h: rect.height };
+}
+
+function line(ctx, points, color, width = 2, dash = []) {
+  ctx.save(); ctx.beginPath(); ctx.strokeStyle = color; ctx.lineWidth = width; ctx.setLineDash(dash);
+  points.forEach((point, i) => i ? ctx.lineTo(point[0], point[1]) : ctx.moveTo(point[0], point[1])); ctx.stroke(); ctx.restore();
+}
+
+function axes(ctx, box, xMax, yMax, xUnit, yUnit, xTicks = 4, yTicks = 2) {
+  ctx.save(); ctx.font = '10px Segoe UI, Arial'; ctx.fillStyle = '#8ca8ba'; ctx.strokeStyle = '#304b5e'; ctx.lineWidth = 1;
+  for (let i = 0; i <= yTicks; i++) { const y = box.y + box.h - i / yTicks * box.h; ctx.beginPath(); ctx.moveTo(box.x, y); ctx.lineTo(box.x + box.w, y); ctx.stroke(); ctx.textAlign = 'right'; ctx.fillText(fmt(i / yTicks * yMax, yMax <= 1 ? 1 : 0), box.x - 5, y + 3); }
+  for (let i = 0; i <= xTicks; i++) { const x = box.x + i / xTicks * box.w; ctx.textAlign = i === 0 ? 'left' : i === xTicks ? 'right' : 'center'; ctx.fillText(fmt(i / xTicks * xMax, xMax < 10 ? 1 : 0), x, box.y + box.h + 14); }
+  ctx.textAlign = 'right'; ctx.fillText(xUnit, box.x + box.w, box.y + box.h + 27);
+  if (yUnit) { ctx.save(); ctx.translate(10, box.y + box.h / 2); ctx.rotate(-Math.PI / 2); ctx.textAlign = 'center'; ctx.fillText(yUnit, 0, 0); ctx.restore(); }
+  ctx.restore();
+}
+
+function heatColor(v) {
+  const p = clampUI(v, 0, 1), colors = [[18, 42, 67], [24, 82, 112], [32, 160, 169], [248, 172, 100]];
+  const scaled = p * 3, i = Math.min(2, Math.floor(scaled)), f = scaled - i;
+  return colors[i].map((c, n) => Math.round(c + (colors[i + 1][n] - c) * f));
+}
+
+function getHeatImage() {
+  const cacheKey = `${state.scenario}:${state.speed}:${state.heatChannel}`;
+  if (heatCache?.key === cacheKey) return heatCache.canvas;
+  const canvas = document.createElement('canvas'); canvas.width = T.length; canvas.height = Z.length;
+  const ctx = canvas.getContext('2d'), image = ctx.createImageData(canvas.width, canvas.height);
+  T.forEach((t, ti) => Z.forEach((z, zi) => {
+    const result = evaluate(z, t, state.scenario, state.speed);
+    const value = state.heatChannel === 'score' ? result.score / 0.5 : result.norm[state.heatChannel];
+    const color = result.observable ? heatColor(value) : [29, 36, 47], offset = ((Z.length - 1 - zi) * T.length + ti) * 4;
+    image.data[offset] = color[0]; image.data[offset + 1] = color[1]; image.data[offset + 2] = color[2]; image.data[offset + 3] = 255;
+  }));
+  ctx.putImageData(image, 0, 0); heatCache = { key: cacheKey, canvas }; return canvas;
+}
+
+function drawHeat() {
+  const canvas = $('heatmap'), { ctx, w, h } = canvasContext(canvas), box = { x: 38, y: 7, w: w - 52, h: h - 45 };
+  ctx.drawImage(getHeatImage(), box.x, box.y, box.w, box.h);
+  axes(ctx, box, END_S, LENGTH_KM, 's', 'km', 4, 4);
+  const x = box.x + state.time / END_S * box.w, y = box.y + box.h * (1 - state.z / LENGTH_KM);
+  line(ctx, [[x, box.y], [x, box.y + box.h]], '#f0f8f9', 1.5, [5, 4]);
+  ctx.strokeStyle = '#effafa'; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, 5, 0, Math.PI * 2); ctx.stroke();
+  canvas._box = box;
+  $('heatTitle').textContent = state.heatChannel === 'score' ? 'Índice D(z,t)' : `${CHANNELS[state.heatChannel].label} · ${CHANNELS[state.heatChannel].short}`;
+}
+
+function drawProfile() {
+  const canvas = $('scoreProfile'), { ctx, w, h } = canvasContext(canvas), box = { x: 36, y: 7, w: w - 49, h: h - 39 };
+  axes(ctx, box, LENGTH_KM, 1, 'km', 'D', 4, 2);
+  const results = Z.map((z) => evaluate(z, state.time, state.scenario, state.speed));
+  const values = results.map((result) => result.score);
+  const pts = values.map((v, i) => [box.x + i / (Z.length - 1) * box.w, box.y + box.h * (1 - v)]);
+  const visibleCount = results.findIndex((result) => !result.observable);
+  if (visibleCount >= 0) {
+    const x = pts[visibleCount][0];
+    ctx.fillStyle = '#29303a99'; ctx.fillRect(x, box.y, box.x + box.w - x, box.h);
+    ctx.fillStyle = '#a3b4bf'; ctx.font = '10px Segoe UI, Arial'; ctx.fillText('Sin retorno', x + 6, box.y + 14);
+  }
+  line(ctx, visibleCount >= 0 ? pts.slice(0, visibleCount) : pts, '#62ddd5', 2.5);
+  const ix = clampUI(Math.round(state.z / 0.05), 0, Z.length - 1), p = pts[ix];
+  if (results[ix].observable) {
+    line(ctx, [[p[0], box.y], [p[0], box.y + box.h]], '#bfd4dc', 1, [4, 4]);
+    ctx.fillStyle = '#f1fbfb'; ctx.beginPath(); ctx.arc(p[0], p[1], 4, 0, Math.PI * 2); ctx.fill();
+  }
+  $('maxScore').textContent = fmt(Math.max(...values)); canvas._box = box;
+}
+
+function drawOtdr() {
+  const canvas = $('otdrTrace'), { ctx, w, h } = canvasContext(canvas);
+  const box = { x: 42, y: 12, w: w - 57, h: h - 45 };
+  const trace = otdrTrace(state.time, state.scenario);
+  const yMin = -27, yMax = 7;
+  const map = (point, key) => [box.x + point.z / LENGTH_KM * box.w,
+    box.y + (yMax - point[key]) / (yMax - yMin) * box.h];
+  ctx.save(); ctx.font = '10px Segoe UI, Arial'; ctx.fillStyle = '#8ca8ba'; ctx.strokeStyle = '#304b5e';
+  for (let i = 0; i <= 4; i++) {
+    const y = box.y + i / 4 * box.h;
+    line(ctx, [[box.x, y], [box.x + box.w, y]], '#304b5e', 1);
+    ctx.textAlign = 'right'; ctx.fillText(fmt(yMax - i / 4 * (yMax - yMin), 0), box.x - 6, y + 3);
+    const x = box.x + i / 4 * box.w;
+    ctx.textAlign = i === 0 ? 'left' : i === 4 ? 'right' : 'center';
+    ctx.fillText(`${i * 2} km`, x, box.y + box.h + 14);
+  }
+  line(ctx, trace.map((point) => map(point, 'reference')), '#80a8c0', 2, [5, 4]);
+  line(ctx, trace.map((point) => map(point, 'measured')), '#69dfd8', 2.5);
+  const finding = otdrEvidence(state.time, state.scenario);
+  if (finding.kind !== 'normal') {
+    const x = box.x + finding.z / LENGTH_KM * box.w;
+    line(ctx, [[x, box.y], [x, box.y + box.h]], '#f6b277', 1.5, [4, 4]);
+  }
+  ctx.fillStyle = '#80a8c0'; ctx.fillRect(box.x + 2, box.y + 5, 14, 2);
+  ctx.fillStyle = '#a9c0ce'; ctx.textAlign = 'left'; ctx.fillText('Referencia', box.x + 21, box.y + 9);
+  ctx.fillStyle = '#69dfd8'; ctx.fillRect(box.x + 108, box.y + 5, 14, 2);
+  ctx.fillStyle = '#bdece9'; ctx.fillText('Medición', box.x + 127, box.y + 9);
+  ctx.restore();
+  $('otdrFinding').textContent = finding.kind === 'cut' ? `Fin de traza ≈ km ${fmt(finding.z)}`
+    : finding.kind === 'loss' ? `Pérdida ≈ ${fmt(finding.lossDb)} dB` : 'Sin cambio óptico';
+}
+
+function drawTrend() {
+  const { ctx, w, h } = canvasContext($('trend')), box = { x: 34, y: 7, w: w - 47, h: h - 39 };
+  axes(ctx, box, END_S, 1, 's', 'D', 4, 2);
+  const results = T.map((t) => evaluate(state.z, t, state.scenario, state.speed));
+  const values = results.map((result) => result.score);
+  const pts = values.map((v, i) => [box.x + i / (T.length - 1) * box.w, box.y + box.h * (1 - v)]);
+  const visibleCount = results.findIndex((result) => !result.observable);
+  if (visibleCount >= 0) {
+    const x = pts[visibleCount][0];
+    ctx.fillStyle = '#29303a99'; ctx.fillRect(x, box.y, box.x + box.w - x, box.h);
+  }
+  line(ctx, visibleCount >= 0 ? pts.slice(0, visibleCount) : pts, '#b4a6f5', 2);
+  const ix = clampUI(Math.round(state.time / DT_S), 0, T.length - 1), p = pts[ix];
+  if (results[ix].observable) {
+    line(ctx, [[p[0], box.y], [p[0], box.y + box.h]], '#bfd4dc', 1, [4, 4]);
+    ctx.fillStyle = '#e1d8ff'; ctx.beginPath(); ctx.arc(p[0], p[1], 3.5, 0, Math.PI * 2); ctx.fill();
+  }
+  const past = Math.max(0, ix - 15), slope = (values[ix] - values[past]) / Math.max(2, T[ix] - T[past]) * 60;
+  $('trendTitle').textContent = `Km ${fmt(state.z)} · D(z,t)`;
+  $('trendSlope').textContent = results[ix].observable ? `${slope >= 0 ? '+' : ''}${fmt(slope)} /min` : 'Sin datos';
+}
+
+function renderChannelCards() {
+  const point = evaluate(state.z, state.time, state.scenario, state.speed);
+  $('selectedLocation').textContent = `Km ${fmt(state.z)}`;
+  if (!point.observable) {
+    $('channelGrid').innerHTML = '<div class="unobservable">Sin retorno observable tras el corte. Las mediciones distribuidas de esta zona no se interpretan.</div>';
+    return;
+  }
+  $('channelGrid').innerHTML = keys.map((key) => {
+    const config = CHANNELS[key], digits = key === 'alpha' || key === 'vib' ? 3 : 1;
+    return `<article class="card channel-card"><div class="channel-name"><span><i style="background:${config.color}"></i>${config.label}</span><span>${config.short}</span></div><strong>${fmt(point.value[key], digits)} <small>${config.unit}</small></strong><div class="ref">Referencia ${fmt(point.ref[key], digits)} · d = ${fmt(point.norm[key])}</div><div class="channel-bar"><span style="width:${Math.round(point.norm[key] * 100)}%;background:${config.color}"></span></div></article>`;
+  }).join('');
+}
+
+function firstDetection() {
+  const key = `${state.scenario}:${state.speed}`;
+  if (firstDetectionCache?.key === key) return firstDetectionCache.result;
+  const first = T.find((t) => detectionsAt(t, state.scenario, state.speed).length > 0) ?? null;
+  firstDetectionCache = { key, result: first }; return first;
+}
+
+function renderDetection(detections) {
+  const item = scenario(), current = mainDetection(detections), first = firstDetection();
+  const started = item.start !== null && state.time >= item.start;
+  const past = first !== null && state.time > first;
+  $('decisionTitle').textContent = current ? current.type : item.kind === 'baseline' ? 'Referencia normal' : past ? 'Evento ya finalizado' : started ? 'Aún en observación' : 'Antes del inicio';
+  $('decisionText').textContent = current ? (current.kind === 'operational'
+    ? `La cresta de vibración se desplazó de forma coherente hasta el km ${fmt(current.z)}. El sistema la informa como tránsito móvil.`
+    : current.type === 'Corte de fibra' ? `La traza de retrodispersión cae al piso de ruido cerca del km ${fmt(current.z)}. Se informa una interrupción en la fibra de alimentación.`
+    : `Se encontró una desviación persistente entre los km ${fmt(current.start)} y ${fmt(current.end)}. Tipo sugerido: ${current.type.toLowerCase()}.`)
+    : item.kind === 'baseline' ? 'No hay perturbaciones programadas y el detector permanece sin activarse.'
+      : started ? 'El fenómeno puede estar comenzando, decayendo o por debajo de la regla de detección en este instante.'
+        : `El fenómeno se programa desde t = ${item.start} s.`;
+  const position = current?.z ?? eventPosition() ?? state.z;
+  const point = evaluate(position, state.time, state.scenario, state.speed);
+  const maxNorm = Math.max(...Object.values(point.norm));
+  const candidate = isCandidate(point);
+  const movement = current?.kind === 'operational';
+  $('evidenceSteps').innerHTML = [
+    ['1 · CAMBIO', `${fmt(maxNorm)} / 1`, `Canal dominante: ${CHANNELS[keys.reduce((a, b) => point.norm[a] > point.norm[b] ? a : b)].label}.`],
+    ['2 · CONDICIÓN', movement ? '16 s de movimiento' : current?.type === 'Corte de fibra' ? 'Fin de traza' : current ? '≥ 12 s' : candidate ? 'En formación' : 'Sin umbral', movement ? 'Cresta DAS coherente.' : current?.type === 'Corte de fibra' ? 'Retorno posterior bajo el piso observable.' : 'Mismo segmento en seis muestras.'],
+    ['3 · SALIDA', current ? current.severity : 'Sin reporte', current ? `Km ${fmt(current.z)} · ${current.type}.` : 'No se emite alerta en este instante.'],
+  ].map(([label, value, detail]) => `<div class="evidence-step"><b>${label}</b><strong>${value}</strong><span>${detail}</span></div>`).join('');
+  $('firstDetection').textContent = `Primera detección: ${first === null ? '—' : `${first} s`}`;
+  const startPct = item.start === null ? 0 : item.start / END_S * 100;
+  const finish = item.kind === 'moving' ? Math.min(END_S, 20 + LENGTH_KM / state.speed * 3600) : item.kind === 'transient' ? 190 : END_S;
+  const finishPct = finish / END_S * 100, nowPct = state.time / END_S * 100;
+  $('eventTimeline').innerHTML = `<div class="timeline-track"></div>${item.start !== null ? `<div class="timeline-active" style="left:${startPct}%;width:${finishPct - startPct}%"></div><div class="timeline-marker" style="left:${startPct}%"></div><span class="timeline-label" style="left:${startPct}%">Inicio ${item.start} s</span>` : ''}${first !== null ? `<div class="timeline-marker" style="left:${first / END_S * 100}%;background:#69ded5"></div><span class="timeline-label" style="left:${first / END_S * 100}%">Detectado ${first} s</span>` : ''}<div class="timeline-now" style="left:${nowPct}%"></div><span class="timeline-label" style="left:${nowPct}%">Ahora ${state.time} s</span>`;
+  const contribution = evaluate(state.z, state.time, state.scenario, state.speed);
+  $('contributionTitle').textContent = `Aportes en km ${fmt(state.z)}`;
+  $('contributionBars').innerHTML = contribution.observable
+    ? keys.map((key) => { const c = CHANNELS[key], weighted = contribution.norm[key] * c.weight; return `<div class="contribution-row"><div class="contribution-head"><span>${c.label}</span><strong>${fmt(weighted)} = ${fmt(contribution.norm[key])} × ${fmt(c.weight)}</strong></div><div class="contribution-track"><div class="contribution-fill" style="width:${Math.round(contribution.norm[key] * 100)}%;background:${c.color}"></div></div></div>`; }).join('')
+    : '<div class="unobservable">Sin retorno observable en esta posición.</div>';
+  $('pointScore').textContent = contribution.observable ? fmt(contribution.score) : '—';
+  $('ruleText').textContent = 'Regla fija: D ≥ 0,30 o algún dᵢ ≥ 0,60 durante 12 s. El corte se reconoce por fin abrupto de la traza OTDR; el tren por desplazamiento coherente de DAS.';
+}
+
+function render() {
+  $('timeValue').textContent = `${state.time} s`;
+  $('trainSpeedValue').textContent = `${state.speed} km/h`;
+  $('speedWrap').hidden = state.scenario !== 'train';
+  const detections = currentDetections();
+  if (state.tab === 'map') { drawMap(detections); drawGraphic(); renderEvent(detections); }
+  if (state.tab === 'signals') { drawHeat(); drawProfile(); drawTrend(); drawOtdr(); renderChannelCards(); }
+  if (state.tab === 'detection') renderDetection(detections);
+}
+
+setup();
+
+</script>
+</body>
+</html>
